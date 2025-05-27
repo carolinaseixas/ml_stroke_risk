@@ -8,6 +8,39 @@ sns.set_theme(style="darkgrid", context="notebook", palette=PALETTE)
 
 
 def plot_compare_models_metrics(df_resultados):
+    """
+    Compares model metrics across different models.
+
+    This function visualizes and compares key performance metrics (e.g., time, recall, AUROC, AUPRC) 
+    for multiple models using boxplots. It helps in assessing how each model performs on 
+    various metrics and highlights their variations.
+
+    Parameters:
+    ----------
+    df_results : pandas DataFrame
+        A DataFrame containing the results of multiple models, where each row corresponds to a 
+        model and columns represent different performance metrics such as R², MAE, RMSE, and time.
+        It expects the following column names: "time_seconds", "test_accuracy", "test_balanced_accuracy",
+        "test_f1", "test_precision", "test_recall", "test_roc_auc" and "test_average_precision".
+
+    Returns:
+    -------
+    None
+        The function displays the plot without returning any value.
+
+    Notes:
+    -----
+    Four metrics are visualized: 
+        - Time (in seconds)
+        - Accuracy
+        - Balanced_accuracy
+        - F1-score
+        - Precision
+        - Recall
+        - AUROC (area under the receiver operating characterisctic curve)
+        - AUPRC (area under the precision recall curve)
+    """
+    
     fig, axs = plt.subplots(4, 2, figsize=(9, 9), sharex=True)
 
     comparar_metricas = [
